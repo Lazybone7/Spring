@@ -9,7 +9,7 @@ public class Client {
         ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
         IAccountService accountService = context.getBean("accountService",IAccountService.class);
         accountService.saveAccount();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 6; i++) {
             System.out.println(accountService);
         }
     }
