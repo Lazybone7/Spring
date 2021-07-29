@@ -16,12 +16,19 @@ public class Client {
     public static void main(String[] args) {
         //1. 获取核心容器对象
         //方式一：ClassPathXmlApplicationContext 类路径
-        ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        //ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
+        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
 
         //2. 通过反射获取对象
-        IAccountService accountService = context.getBean("accountService",IAccountService.class);
-        accountService.saveAccount();
+        IAccountService as = context.getBean("accountService",IAccountService.class);
+        IAccountService as2 = context.getBean("accountService",IAccountService.class);
 
+        System.out.println(as == as2);
+
+        //容器销毁
+        context.close();
 
     }
+
+
 }
