@@ -11,6 +11,7 @@
     <modules>
         <module>BeanFactory</module>
         <module>SpringFirstExperience</module>
+        <module>BeanObject</module>
     </modules>
 
 

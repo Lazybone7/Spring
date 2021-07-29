@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- Spring对Bean的管理细节
+        一. 创建Bean的三种方式
+        二. Bean对象的作用范围
+        三. Bean对象的生命周期
+   -->
+    <!-- 1. 使用默认构造函数创建
+           在spring的配置文件中使用bean标签，配以id和class属性之后。且没有其他属性和标签时，
+           采用的就是默认构造函数创建Bean对象。如果此时类中没用默认构造函数，则对象无法创建
+    -->
+<!--    <bean id="accountService" class="com.ithan.service.imp.IAccountServiceImp"></bean>-->
+
+<!--    2. 使用普通工厂中的方法创建对象 （使用某个类中的方法创建对象，并存入Spring容器）-->
+    <bean id="instanceFactory" class="com.ithan.factory.InstanceFactory"></bean>
+    <bean id="accountService" factory-bean="instanceFactory" factory-method="getAccountService"></bean>
+</beans>
