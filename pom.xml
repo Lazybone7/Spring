@@ -13,6 +13,7 @@
         <module>SpringFirstExperience</module>
         <module>BeanObject</module>
         <module>DI</module>
+        <module>Anno_IOC</module>
     </modules>
 
 
