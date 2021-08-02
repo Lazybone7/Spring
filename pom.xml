@@ -15,6 +15,7 @@
         <module>DI</module>
         <module>Anno_IOC</module>
         <module>XmlIOC</module>
+        <module>AccountAnnoIOC</module>
     </modules>
 
 
