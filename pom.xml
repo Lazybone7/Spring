@@ -16,6 +16,7 @@
         <module>Anno_IOC</module>
         <module>XmlIOC</module>
         <module>AccountAnnoIOC</module>
+        <module>AccountPureAnno</module>
     </modules>
 
 
