@@ -3,17 +3,24 @@ package com.ithan;
 import com.ithan.domain.Account;
 import com.ithan.service.IAccountService;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 
 import java.util.List;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "classpath:bean.xml")
 public class AccountServiceTest {
+    @Autowired
+    private IAccountService accountService;
+
     @Test
     public void testFindAll(){
-        ApplicationContext context = new ClassPathXmlApplicationContext("bean.xml");
-        IAccountService accountService = context.getBean("accountService", IAccountService.class);
         List<Account> allAccount = accountService.findAllAccount();
         for (Account account: allAccount){
             System.out.println(account);

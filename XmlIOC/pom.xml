@@ -16,7 +16,13 @@
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.2.Release</version>
+            <version>5.1.7.RELEASE</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>5.1.7.RELEASE</version>
         </dependency>
 
         <dependency>
