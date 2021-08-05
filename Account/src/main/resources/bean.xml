@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        <!--配置service-->
+        <bean id="accountService" class="com.ithan.service.impl.AccountServiceImpl">
+            <!--注入dao对象-->
+            <property name="accountDao" ref="accoutDao"></property>
+            <property name="transactionManager" ref="transactionManage"></property>
+        </bean>
+
+        <!--配置dao对象-->
+        <bean id="accoutDao" class="com.ithan.dao.impl.AccountDaoImpl">
+            <!--注入QueryRunner对象-->
+            <property name="queryRunner" ref="queryRunner"></property>
+            <property name="connectionUtils" ref="connectionUtils"></property>
+        </bean>
+
+        <bean id="queryRunner" class="org.apache.commons.dbutils.QueryRunner" scope="prototype"></bean>
+
+        <!--配置数据源-->
+        <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+            <!--注入连接数据库的必备信息-->
+            <property name="driverClass" value="com.mysql.jdbc.Driver"></property>
+            <property name="jdbcUrl" value="jdbc:mysql:///spring"></property>
+            <property name="user" value="root"></property>
+            <property name="password" value="root"></property>
+        </bean>
+
+        <!--配置ConnectionUtils对象-->
+        <bean id="connectionUtils" class="com.ithan.util.ConnectionUtils">
+            <property name="dataSource" ref="dataSource"></property>
+        </bean>
+
+        <!--配置TransactionManage对象-->
+        <bean id="transactionManage" class="com.ithan.util.TransactionManager">
+            <property name="connectionUtils" ref="connectionUtils"></property>
+        </bean>
+</beans>
