@@ -7,7 +7,6 @@
         <bean id="accountService" class="com.ithan.service.impl.AccountServiceImpl">
             <!--注入dao对象-->
             <property name="accountDao" ref="accoutDao"></property>
-            <property name="transactionManager" ref="transactionManage"></property>
         </bean>
 
         <!--配置dao对象-->
@@ -37,4 +36,11 @@
         <bean id="transactionManage" class="com.ithan.util.TransactionManager">
             <property name="connectionUtils" ref="connectionUtils"></property>
         </bean>
+        <!--配置beanFactory对象-->
+        <bean id="beanFactory" class="com.ithan.factory.BeanFactory">
+            <property name="transactionManager" ref="transactionManage"></property>
+            <property name="accountService" ref="accountService"></property>
+        </bean>
+        <!--配置代理的Service-->
+        <bean id="proxyAccountService" factory-bean="beanFactory" factory-method="getAccountService"></bean>
 </beans>

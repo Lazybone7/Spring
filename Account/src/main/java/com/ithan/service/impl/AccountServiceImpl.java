@@ -14,12 +14,6 @@ import java.util.List;
 public class AccountServiceImpl implements IAccountService{
     private IAccountDao accountDao;
 
-    private TransactionManager transactionManager;
-
-    public void setTransactionManager(TransactionManager transactionManager) {
-        this.transactionManager = transactionManager;
-    }
-
     public void setAccountDao(IAccountDao accountDao) {
         this.accountDao = accountDao;
     }
@@ -61,5 +55,8 @@ public class AccountServiceImpl implements IAccountService{
         accoutTarget.setMoney(accoutTarget.getMoney() + money);
         //5. 更新转出账户
         accountDao.updateAccount(accoutSource);
+        //int a = 1/0;
+        //5. 更新转入账户
+        accountDao.updateAccount(accoutTarget);
     }
 }
