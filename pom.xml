@@ -19,6 +19,7 @@
         <module>AccountPureAnno</module>
         <module>Account</module>
         <module>Proxy</module>
+        <module>SpringAOP</module>
     </modules>
 
 
