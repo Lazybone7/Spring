@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+        <!--配置spring的IOC，导入accountService-->
+        <bean id="accountService" class="com.ithan.service.impl.AccountServiceImp"></bean>
+
+        <bean id="logger" class="com.ithan.utils.Logger"></bean>
+
+        <!--配置AOP-->
+        <aop:config>
+            <!--配置在切面外，且必须在切面之前-->
+            <aop:pointcut id="pt1" expression="execution(* com.ithan.service.impl.*.*(..))"></aop:pointcut>
+            <!--配置切面-->
+            <aop:aspect id="logAdvice" ref="logger">
+                <!--<aop:before method="beforeLog" pointcut="execution(* com.ithan.service.impl.*.*(..))"></aop:before>-->
+                <!--<aop:after-returning method="afterLog" pointcut="execution(* com.ithan.service.impl.*.*(..))"></aop:after-returning>-->
+                <!--<aop:after-throwing method="afterThrowingLog" pointcut="execution(* com.ithan.service.impl.*.*(..))"></aop:after-throwing>-->
+                <!--<aop:after method="finalLog" pointcut="execution(* com.ithan.service.impl.*.*(..))"></aop:after>-->
+                <!--<aop:before method="beforeLog" pointcut-ref="pt1"></aop:before>-->
+                <!--<aop:after-returning method="afterLog" pointcut-ref="pt1"></aop:after-returning>-->
+                <!--<aop:after-throwing method="afterThrowingLog" pointcut-ref="pt1"></aop:after-throwing>-->
+                <!--<aop:after method="finalLog" pointcut-ref="pt1"></aop:after>-->
+                <!--配置在切面里-->
+                <!--<aop:pointcut id="pt1" expression="execution(* com.ithan.service.impl.*.*(..))"></aop:pointcut>-->
+
+                <!--配置环绕通知-->
+                <aop:around method="aroundLog" pointcut-ref="pt1"></aop:around>
+            </aop:aspect>
+        </aop:config>
+</beans>
