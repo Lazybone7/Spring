@@ -21,6 +21,7 @@
         <module>Proxy</module>
         <module>SpringAOP</module>
         <module>AdviceType</module>
+        <module>AnnotationAOP</module>
     </modules>
 
 
