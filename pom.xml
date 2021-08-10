@@ -22,6 +22,7 @@
         <module>SpringAOP</module>
         <module>AdviceType</module>
         <module>AnnotationAOP</module>
+        <module>AccountAOP</module>
     </modules>
 
 
